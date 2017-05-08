@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>keypair_sodium. cyphr 0.1.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">cyphr 0.1.0</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Asymmetric encryption with sodium</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>keypair_sodium(pub, key, authenticated&nbsp;=&nbsp;TRUE)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>pub</dt>
+      <dd>A sodium public key.  This is either a raw vector of
+length 32 or a path to file containing the contents of the key
+(written by <code>writeBin</code>.</dd>
+      <dt>key</dt>
+      <dd>A sodium private key.  This is either a raw vector of
+length 32 or a path to file containing the contents of the key
+(written by <code>writeBin</code>.</dd>
+      <dt>authenticated</dt>
+      <dd>Logical, indicating if authenticated
+encryption (via <code>sodium::auth_encrypt</code> /
+<code>sodium::auth_decrypt</code>) should be used.  If <code>FALSE</code>
+then <code>sodium::simple_encrypt</code> /
+<code>sodium::simple_decrypt</code> will be used.  The difference is
+that with <code>authenticated = TRUE</code> the message is signed with
+your private key so that tampering with the message will be
+detectd.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Wrap a pair of sodium keys for asymmetric encryption.  You should
+pass your private key and the public key of the person that you
+are communicating with.</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p><em>NOTE</em>: the order here (pub, key) is very important; if the
+wrong order is used you cannot decrypt things.  Unfortunately
+because sodium keys are just bytesstrings there is nothing to
+distinguish the public and private keys so this is a pretty easy
+mistake to make.</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>keypair_sodium</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

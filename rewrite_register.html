@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>rewrite_register. cyphr 0.1.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">cyphr 0.1.0</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Register functions to work with encrypt/decrypt</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>rewrite_register(package, name, arg, fn&nbsp;=&nbsp;NULL)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>package</dt>
+      <dd>The name of the package with the function to
+support (as a scalar character).  If your function has no
+package (e.g., a function you are working on outside of a
+package, use "" as the name).</dd>
+      <dt>name</dt>
+      <dd>The name of the function to support.</dd>
+      <dt>arg</dt>
+      <dd>The name of the argument in the target function that
+refers to the file that should be encrypted or decrypted.  This
+is the value you would pass through to <code>file_arg</code> in
+<code><a href='encrypt.html'>encrypt</a></code>.</dd>
+      <dt>fn</dt>
+      <dd>Optional (and should be rare) argument used to work
+around functions that pass all their arguments through to a
+second function as dots.  This is how <code>read.csv</code> works.  If
+needed this function is a length-2 character vector in the form
+"package", "name" with the actual function that is used.  But
+this should be very rare!</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Add information about argument rewriting so that they can be used
+with <code><a href='encrypt.html'>encrypt</a></code> and <code><a href='encrypt.html'>decrypt</a></code>.</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>If your package uses cyphr, it might be useful to add this as
+an onLoad hook.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'># The saveRDS function is already supported.  But if we wanted to
+# support it we could look at the arguments for the function:
+args(saveRDS)
+</div>
+<div class='output'>function (object, file = &quot;&quot;, ascii = FALSE, version = NULL, compress = TRUE, 
+    refhook = NULL) 
+NULL
+</div>
+<div class='input'># The &#39;file&#39; argument is the one that refers to the filename, so
+# we&#39;d write:
+rewrite_register(&quot;base&quot;, &quot;saveRDS&quot;, &quot;file&quot;)
+# It&#39;s non-API but you can see what is supported in the package by
+# looking at
+ls(cyphr:::db)
+</div>
+<div class='output'> [1] &quot;base::load&quot;         &quot;base::readLines&quot;    &quot;base::readRDS&quot;     
+ [4] &quot;base::save&quot;         &quot;base::saveRDS&quot;      &quot;base::writeLines&quot;  
+ [7] &quot;utils::read.csv&quot;    &quot;utils::read.csv2&quot;   &quot;utils::read.delim&quot; 
+[10] &quot;utils::read.delim2&quot; &quot;utils::read.table&quot;  &quot;utils::write.csv&quot;  
+[13] &quot;utils::write.csv2&quot;  &quot;utils::write.table&quot;
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>rewrite_register</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

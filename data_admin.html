@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>data_admin_init. cyphr 0.1.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">cyphr 0.1.0</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Encrypted data administration</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>data_admin_init(path_data&nbsp;=&nbsp;".", path_user&nbsp;=&nbsp;NULL, quiet&nbsp;=&nbsp;FALSE)</div>
+<div>data_admin_authorise(path_data&nbsp;=&nbsp;".", hash&nbsp;=&nbsp;NULL, path_user&nbsp;=&nbsp;NULL, yes&nbsp;=&nbsp;FALSE, quiet&nbsp;=&nbsp;FALSE)</div>
+<div>data_admin_list_requests(path_data&nbsp;=&nbsp;".")</div>
+<div>data_admin_list_keys(path_data&nbsp;=&nbsp;".")</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>path_data</dt>
+      <dd>Path to the data set.  We will store a bunch of
+things in a hidden directory within this path.  The default is
+to use the working directory of R, which should work well for
+things like RStudio projects.</dd>
+      <dt>path_user</dt>
+      <dd>Path to the directory with your ssh key.
+Usually this can be ommited.</dd>
+      <dt>quiet</dt>
+      <dd>Suppress printing of informative messages.</dd>
+      <dt>hash</dt>
+      <dd>A vector of hashes to add.  If provided, each hash can
+be the binary or string representation of the hash to add.  Or
+omit to add each request.</dd>
+      <dt>yes</dt>
+      <dd>Skip the confirmation prompt?  If any request is
+declined then the function will throw an error on exit.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Encrypted data administration; functions for setting up, adding
+users, etc.</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p><code>data_admin_init</code> initialises the system; it will create a
+data key if it does not exist and authorise you.  If it already
+exists and you do not have access it will throw an error.</p>
+  
+      <p><code>data_admin_authorise</code> authorises a key by creating a key to
+the data that the user can use in conjunction with their personal
+key.</p>
+  
+      <p><code>data_admin_list_requests</code> lists current requests.</p>
+  
+      <p><code>data_admin_list_keys</code> lists known keys that can access the
+data.  Note that this is <em>not secure</em>; keys not listed here
+may still be able to access the data (if a key was authorised and
+moved elsewhere for example).  Conversely, if the user has deleted
+or changed their key they will not be able to access the data
+despite the key being listed here.</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>data_admin_authorise</li><li>data_admin_init</li><li>data_admin_list_keys</li><li>data_admin_list_requests</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a href='data_user.html'>data_request_access</a></code> for requesting access
+  to the data, and and <code>data_key</code> for using the data
+  itself.  But for a much more thorough overview, see the vignette
+  (<code>vignette("workflow", package="cyphr")</code>).
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

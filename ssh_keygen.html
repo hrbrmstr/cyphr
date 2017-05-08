@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>ssh_keygen. cyphr 0.1.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">cyphr 0.1.0</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Wrapper around ssh-keygen</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>ssh_keygen(path&nbsp;=&nbsp;tempfile(), password&nbsp;=&nbsp;TRUE)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>path</dt>
+      <dd>A directory in which to create a keypair.  If the path
+does not exist it will be created.</dd>
+      <dt>password</dt>
+      <dd>The password for the key.  The default will prompt
+interactively (but without echoing the password).  Other valid
+options are <code>FALSE</code> (no password) or a string.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+The <code>path</code>, invisibly.  This is useful in the case
+  where <code>path</code> is <code><a href='http://www.inside-r.org/r-doc/base/tempfile'>tempfile</a>()</code>.
+</dl></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Wrapper around <code>ssh-keygen</code>(1).  In general this should not
+be used (generate keys yourself with <code>ssh-keygen</code> at the
+command line.  However this is useful for testing and
+demonstration so I have included it to make that easier.  Once a
+keypair has been generated it can be used with
+<code><a href='keypair_openssl.html'>keypair_openssl</a></code>.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>## Not run: 
+# # Generate a new key in a temporary directory:
+# path &lt;- ssh_keygen(password = FALSE)
+# dir(path) # will contain id_rsa and id_rsa.pub
+# 
+# # This key can now be used via config_openssl:
+# cfg &lt;- config_openssl(path)
+# secret &lt;- encrypt_string(&quot;hello&quot;, NULL, cfg)
+# decrypt_string(secret, cfg)
+# ## End(Not run)
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>ssh_keygen</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

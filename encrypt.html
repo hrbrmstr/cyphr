@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>encrypt. cyphr 0.1.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">cyphr 0.1.0</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Easy encryption and decryption</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>encrypt(expr, key, file_arg&nbsp;=&nbsp;NULL, envir&nbsp;=&nbsp;parent.frame())</div>
+<div>decrypt(expr, key, file_arg&nbsp;=&nbsp;NULL, envir&nbsp;=&nbsp;parent.frame())</div>
+<div>encrypt_(expr, key, file_arg&nbsp;=&nbsp;NULL, envir&nbsp;=&nbsp;parent.frame())</div>
+<div>decrypt_(expr, key, file_arg&nbsp;=&nbsp;NULL, envir&nbsp;=&nbsp;parent.frame())</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>expr</dt>
+      <dd>A single expression representing a function call that
+would be caled for the side effect of creating or reading a
+file.</dd>
+      <dt>key</dt>
+      <dd>A <code>cyphr_key</code> object describing the
+encryption approach to use.</dd>
+      <dt>file_arg</dt>
+      <dd>Optional hint indicating which argument to
+<code>expr</code> is the filename.  This is done automatically for
+some built-in functions.</dd>
+      <dt>envir</dt>
+      <dd>Environment in which <code>expr</code> is to be evaluated.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Wrapper functions for encryption.  These functions wrap
+expressions that produce or consume a file and arrange to encrypt
+(for producing functions) or decryprt (for consuming functions).
+The forms with a trailing underscore (<code>encrypt_</code>,
+<code>decrypt_</code>) do not use any non-standard evaluation and may be
+more useful for programming.</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>These functions will not work for all functions.  For example
+<code>pdf</code>/<code>dev.off</code> will create a file but we can't wrap
+those up (yet!).  Functions that <em>modify</em> a file (e.g.,
+appending) also will not work and may cause data loss.</p>
+  
+    </div>
+      </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>decrypt</li><li>decrypt_</li><li>encrypt</li><li>encrypt_</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
